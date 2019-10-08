@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ExoController!{% endblock %}
+
+{% block body %}
+
+
+             {{ user.id }}<br>
+             {{ user.name }}<br>
+             {{ user.email }}<br>
+             {{ user.birthday | date('Y/m/d')}}<br>
+             {{ user.createdAt | date('Y/m/d') }}<br>
+             {%  if user.isConnected %} Validé {% else %} Pas validé {% endif %}<br>
+             {{ user.points }}<br>
+
+
+{% endblock %}

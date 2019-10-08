@@ -1,0 +1,8 @@
+controllers:
+    resource: ../../src/Controller/
+    type: annotation
+
+Hello_routes:
+    resource: ../../src/Controller/HelloController.php
+    type: annotation
+    prefix: helloForm

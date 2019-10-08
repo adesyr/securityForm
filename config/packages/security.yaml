@@ -1,0 +1,35 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        in_memory: { memory: null }
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        admin:
+            pattern: ^/helloForm/
+            form_login:
+                provider: in_memory
+                login_path: /helloForm/login
+                check_path: /helloForm/login_check
+            logout:
+                path: /helloForm/logout
+                target: /helloForm/login
+        main:
+            anonymous: true
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: /helloForm/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /helloForm/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /helloForm/hello, roles: ROLE_BONJOUR }
